@@ -1,0 +1,13 @@
+.orders-body, .orders-body div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.orders-body {
+    padding: 0 4em;
+}
+
+.orders-body div {
+    line-height: .1em;
+}
