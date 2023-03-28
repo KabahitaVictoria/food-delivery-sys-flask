@@ -1,11 +1,11 @@
 # FOOD-DELIVERY APP (Flask and React JS)
 ## starting both frontend and backend in different terminals
 Backend:
-flask --app run.py --debug run
+- flask --app run.py --debug run
 
 Frontend:
-cd frontend
-npm run dev
+- cd frontend
+- npm run dev
 
 ## Authentication
 I have added authentication using jwt access tokens stored in the local storage
