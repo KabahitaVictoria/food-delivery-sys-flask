@@ -17,5 +17,6 @@ I have added authentication using jwt access tokens stored in the local storage
 - refresh tokens have been set up so that a user isn't asked to login again after access token expires (after one hour)
 
 ## Current progress
+- functionality for adding categories and items to categories
 - designing the profile ui for a user
 - designing dashboard and profile for administrator
