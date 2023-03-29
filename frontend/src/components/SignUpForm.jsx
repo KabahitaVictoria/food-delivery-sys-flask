@@ -29,7 +29,13 @@ export function SignUpForm() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setData(data.message))
+      .then((data) => {
+        if(data.message) {
+          setData(data.message)
+        } else if(data.error) {
+          setData(data.error)
+        }
+      })
       .catch((err) => console.log(err));
 
     setHasSubmitted(!hasSubmitted);
@@ -42,7 +48,7 @@ export function SignUpForm() {
   return (
     <>
       <h1>Sign Up</h1>
-      {hasSubmitted ? <p>{data}</p> : <p>Please provide your details</p>}
+      {hasSubmitted ? <p>{data}</p> : <p></p>}
       <label htmlFor="first-name">
         <b>First name</b>
       </label>

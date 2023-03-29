@@ -22,23 +22,26 @@ def create_user():
         password = data['password']
         
         if not first_name:
-                return jsonify({'message':"Please provide your first name"})
+                return jsonify({'error':"Please provide your first name"})
             
-        if not last_name:
-                return jsonify({'message':"Please provide your last name"})
+        elif not last_name:
+                return jsonify({'error':"Please provide your last name"})
         
-        if not contact:
-                return jsonify({'message':"Please provide your contact"})
+        elif not email:
+                return jsonify({'error':"Please provide your email address"})
         
-        if len(password) < 6:
-                return jsonify({'message': "Your password is too short"}), 400
+        elif not contact:
+                return jsonify({'error':"Please provide your contact"})
+        
+        elif len(password) < 6:
+                return jsonify({'error': "Your password is too short"}), 400
 
-        if User.query.filter_by(email=email).first() is not None:
-            return jsonify({'message': "This email is already in use"}), 409 
+        elif User.query.filter_by(email=email).first() is not None:
+            return jsonify({'error': "This email is already in use"}), 409 
 
         
-        if User.query.filter_by(contact=contact).first() is not None:
-            return jsonify({'message': "This phone number is already in use"}), 409
+        elif User.query.filter_by(contact=contact).first() is not None:
+            return jsonify({'error': "This phone number is already in use"}), 409
         
         hashed_pw = generate_password_hash(password, 'sha256')
         user = User(first_name=first_name,
@@ -83,10 +86,10 @@ def login_user():
                 'id': user.id
             }})
         else:
-            jsonify({'message': 'password is incorrect, please try again'}), 401
+            jsonify({'error': 'password is incorrect, please try again'}), 401
         
     else:
-        return jsonify({'message': 'email entered does not exist. Please sign up!'}), 401
+        return jsonify({'error': 'email entered does not exist. Please sign up!'}), 401
     
 # ------------------------
 # REFRESH ACCESS TOKEN

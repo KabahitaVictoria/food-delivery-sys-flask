@@ -1,6 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export function Nav() {
+
+  const { id } = useParams()
+
   return (
     <nav className="prof-nav">
       <div className="logo">
@@ -13,14 +17,14 @@ export function Nav() {
       </div>
       <div className="nav-pages">
         <NavLink
-          to={"/dashboard"}
+          to={`/dashboard/${id}`}
           className={({ isActive }) => (isActive ? "active" : "pages")}
         >
           Dashboard
         </NavLink>
         <NavLink
           className={({ isActive }) => (isActive ? "active" : "pages")}
-          to={"/orders"}
+          to={`/orders/${id}`}
         >
           Orders
         </NavLink>

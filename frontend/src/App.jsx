@@ -15,8 +15,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" index element={<IndexLandingPage />} />
-      <Route path="/dashboard/:userId" exact element={<UserDash />} />
-      <Route path="/orders" element={<OrdersPage />} />
+      <Route path="/dashboard/:id" exact element={<UserDash />} />
+      <Route path="/orders/:id" element={<OrdersPage />} />
     </Routes>
   );
 }

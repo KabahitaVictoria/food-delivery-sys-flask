@@ -12,6 +12,8 @@ export function LandingPage() {
   const [data, setData] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
+  const [userId, setUserId] = useState(0)
+
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
@@ -32,13 +34,14 @@ export function LandingPage() {
     })
       .then((res) => res.json())
       .then((data) => {
+        setUserId(data.for.id)
         setData(data.message)
         if (data.tokens.access_token) {
           localStorage.setItem(
             "access_token",
             JSON.stringify(data.tokens.access_token)
           );
-          navigate(`/dashboard/${data.for.id}`);
+          navigate(`/dashboard/${userId}`);
         }
       })
       .catch((err) => console.log(err));

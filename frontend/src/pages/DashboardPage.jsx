@@ -75,7 +75,7 @@ export function DashBody(props) {
 }
 
 export function UserDash() {
-  const { userId } = useParams(); // get single user based on id
+  const { id } = useParams(); // get single user based on id
   const [firstName, setFirstName] = useState("");
 
   const getToken = () =>
@@ -84,7 +84,7 @@ export function UserDash() {
       : null;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/user/${userId}`, {
+    fetch(`http://localhost:5000/users/user/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${getToken()}`,
