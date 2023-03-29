@@ -1,9 +1,27 @@
-import { Link, NavLink } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 
 export function Nav() {
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const { id } = useParams()
+  const removeToken = () => {
+    localStorage.removeItem("access_token");
+  };
+
+  function logMeOut() {
+    fetch("http://localhost:5000/auth/logout", {
+      method: "post"
+    }).then(res => {
+      console.log(res);
+      removeToken()
+      navigate("/")
+    }).catch(err => {
+      const errRes = err.response
+      console.log(errRes);
+      console.log(errRes.status);
+      console.log(errRes.headers);
+    })
+  }
 
   return (
     <nav className="prof-nav">
@@ -31,7 +49,7 @@ export function Nav() {
         <Link className="pages">Categories</Link>
         <Link className="pages">Profile</Link>
       </div>
-      <button>Logout</button>
+      <button onClick={logMeOut}>Logout</button>
     </nav>
   );
 }
