@@ -18,6 +18,9 @@ I have added authentication using jwt access tokens stored in the local storage
 
 ## Current progress
 - reflecting user info on the dashboard
+- allowing user to edit their info
+
+## Later on...
 - add functionality for adding categories and items to categories
 - design the profile ui for a user
 - design dashboard and profile for administrator
