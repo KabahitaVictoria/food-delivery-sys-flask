@@ -46,10 +46,58 @@ export function Nav() {
         >
           Orders
         </NavLink>
-        <Link className="pages">Categories</Link>
-        <Link className="pages">Profile</Link>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : "pages")}
+          to={`/categories/${id}`}
+        >
+          Categories
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : "pages")}
+          to={`/profile/${id}`}
+        >
+          Profile
+        </NavLink>
       </div>
-      <button onClick={logMeOut}>Logout</button>
+      <button onClick={logMeOut} className="logout-btn">
+        Logout
+      </button>
+      <div className="nav-drpdwn">
+        <img
+          src="https://img.icons8.com/material-outlined/24/000000/menu--v1.png"
+          className="dropbtn icon"
+          alt=""
+        />
+        <div className="nav-pages-drpdwn">
+          <NavLink
+            to={`/dashboard/${id}`}
+            className={({ isActive }) => (isActive ? "active" : "pages")}
+          >
+            Dashboard
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "pages")}
+            to={`/orders/${id}`}
+          >
+            Orders
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "pages")}
+            to={`/categories/${id}`}
+          >
+            Categories
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "pages")}
+            to={`/profile/${id}`}
+          >
+            Profile
+          </NavLink>
+          <button onClick={logMeOut} className="logout-btn logout-btn-drpdwn">
+            Logout
+          </button>
+        </div>
+      </div>
     </nav>
   );
 }

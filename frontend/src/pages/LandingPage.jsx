@@ -4,6 +4,7 @@ import { SignUpForm } from "../components/SignUpForm";
 import { Footer } from "../components/Footer";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../css/LandingPage.css'
 
 export function LandingPage() {
   const [email, setEmail] = useState("");

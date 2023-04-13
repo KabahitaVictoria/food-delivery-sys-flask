@@ -70,13 +70,26 @@ def update_user(id):
         return jsonify({'data': UserSchema().dump(user_to_update)})
     
     elif request.method == 'PUT':
-        user_to_update.name = data['name']
+        user_to_update.first_name = data['firstName']
+        user_to_update.last_name = data['lastName']
         user_to_update.email = data['email']
         user_to_update.contact = data['contact']
-        user_to_update.user_type = data['user_type']
-        user_to_update.password = data['password']
         user_to_update.updated_at = datetime.datetime.utcnow()
+        
+        if not user_to_update.first_name:
+                return jsonify({'message':"Please provide your first name"})
+            
+        elif not user_to_update.last_name:
+                return jsonify({'message':"Please provide your last name"})
+            
+        elif not user_to_update.contact:
+                return jsonify({'message':"Please provide your contact"})
+            
+        elif not user_to_update.email:
+                return jsonify({'message':"Please provide your email"})
         
         db.session.commit()
         
-        return jsonify({'message': f'user of id {id} updated successfully' ,'data': UserSchema().dump(user_to_update)})
+        return jsonify({'message': f'Info updated successfully!' ,'data': UserSchema().dump(user_to_update)})
+    
+    

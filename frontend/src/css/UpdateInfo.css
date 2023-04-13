@@ -1,0 +1,45 @@
+.update-info {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto 1em auto;
+    background-color: rgba(0, 0, 0, 0.836);
+    padding: 1em;
+    color: rgba(255, 255, 255, 0.836);
+}
+
+.update-msg {
+    color: #fe9800c0;
+}
+
+button {
+    background-color: lightseagreen;
+    width: 100px;
+    align-self: center;
+    margin: 20px;
+    padding: 7px;
+    border: none;
+    color: black;
+    border-radius: 5px;
+}
+
+.update-info-labels {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: .75em 0 0 0;
+    height: 20px;
+}
+
+.update-info-labels b {
+    padding: 0;
+}
+
+.update-info-labels p {
+    font-size: 14px;
+}
+
+.current {
+    color: lightskyblue;
+}

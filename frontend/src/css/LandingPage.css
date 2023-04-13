@@ -1,0 +1,154 @@
+/* LANDING PAGE */
+/* banner */
+.banner {
+  width: 100%;
+  background: url("/aleisha-kalina-ajvBIREUzU8-unsplash.jpg");
+  background-size: cover;
+  color: white;
+  padding: 0;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.61);
+  padding: 2em;
+  padding-bottom: 4em;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav .account {
+  display: flex;
+  align-items: center;
+}
+
+.account a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.account button {
+  padding: 1em 1.5em;
+  border-radius: 15px;
+  border: none;
+  margin-left: 15px;
+  background-color: seagreen;
+  font-family: "Open Sans";
+}
+
+.account button:hover {
+  border: 2px solid rgba(255, 255, 255, 0.671);
+  transition: 0.5s;
+}
+
+.signin:hover {
+  border-bottom: 1px solid white;
+  transition: 1s;
+}
+
+.banner h1 {
+  font-weight: 700;
+}
+
+/* forms */
+/* --- login --- */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 33%;
+  left: 50%;
+  margin-top: -100px; /* Negative half of height. */
+  margin-left: -250px; /* Negative half of width. */
+  border: 3px solid #f1f1f1;
+  border-radius: 5px;
+  z-index: 3;
+}
+
+#myForm2 {
+  top: 21%;
+  left: 55%;
+}
+
+.form-popup:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -2;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.781);
+  padding: 2em 4em 4em 4em;
+}
+
+input {
+  padding: 0.75em;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.644);
+  background-color: black;
+  color: white;
+}
+
+.form-container button {
+  padding: 0.6em 1em;
+  width: 50%;
+  margin: 0.5em auto;
+  margin-top: 1em;
+  background-color: seagreen;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-family: "Open Sans";
+  font-weight: 700;
+}
+
+.form-container button:hover {
+  border: 2px solid black;
+  transition: 1s;
+}
+
+.form-container .btn-cancel {
+  background-color: red;
+}
+
+/* sample divs */
+.sample {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  width: 65%;
+  margin: 2em auto;
+}
+
+.sample img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin-right: 2em;
+}
+
+.sample2 img {
+  order: 2;
+  border: 1px solid rgba(0, 0, 0, 0.445);
+}
+
+.sample2 p {
+  text-align: right;
+  margin-right: 2em;
+}
+
+@media screen and (max-width: 1400px) {
+  .form-container {
+    width: 100%;
+  }
+}

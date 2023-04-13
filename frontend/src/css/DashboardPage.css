@@ -1,0 +1,232 @@
+/* NAVIGATION */
+.prof-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2em 0 0.2em 0.6em;
+  background-color: black;
+}
+
+.prof-nav .logout-btn {
+  border: none;
+  background-color: rgba(255, 0, 0, 0.699);
+  color: white;
+  padding: 1em;
+  border-radius: 5px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  margin: 0;
+}
+
+.prof-nav button:hover {
+  border: 2px solid rgba(255, 255, 255, 0.568);
+  transition: 0.2s;
+}
+
+.nav-pages {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pages {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.pages:hover {
+  color: #fe9800;
+  border-bottom: 1px solid #fe9800;
+  transition: 0.5s;
+}
+
+/* nav drop down */
+.nav-pages-drpdwn {
+  display: none;
+  min-width: 200px;
+}
+
+.dropbtn {
+    display: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin: .5em 2em;
+    padding: .5em;
+}
+
+/* categories section */
+.cat-card-link {
+  color: black;
+  text-decoration: none;
+}
+
+.category-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-heading {
+  color: #fe9800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-heading h2 {
+  width: 90%;
+}
+
+.see-more-link {
+  color: #fe9800;
+}
+
+.see-more-link:hover {
+  text-decoration: none;
+  border-bottom: 1px solid;
+  color: black;
+  transition: .2s;
+}
+
+.cat-cards {
+  display: flex;
+  padding-left: .5em;
+  align-items: center;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 150px;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.562);
+  padding: 2.5em 0 1.4em 0;
+  border-radius: 5px;
+  margin: 0.5em;
+}
+
+.category-card:hover {
+  background-color: #fe9800be;
+  transition: 0.5s;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.user-info-1 {
+  width: 29%;
+}
+
+/* user info section */
+.user-info-2 {
+  display: none;
+}
+
+/* ----- RESPONSIVENESS ----- */
+@media screen and (max-width: 700px) {
+  /* navigation */
+  .prof-nav {
+    padding: 0.1em;
+    font-size: 16px;
+  }
+
+  .logo img {
+    width: 80px;
+    margin-left: 0.2em;
+  }
+
+  .nav-pages {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .pages {
+    margin: 0 0.15em;
+  }
+
+  .logout-btn,
+  .nav-pages {
+    display: none;
+  }
+
+  .nav-drpdwn {
+    position: relative;
+    display: inline-block;
+  }
+
+  .active,
+  .pages,
+  .logout-btn-drpdwn {
+    display: block;
+    padding: 20px;
+  }
+
+  .pages:hover {
+    border-bottom: none;
+  }
+
+  .logout-btn-drpdwn {
+    position: relative;
+    left: 25%;
+    bottom: 10px;
+    margin-bottom: 2em;
+  }
+
+  .nav-drpdwn:hover .nav-pages-drpdwn,
+  .dropbtn {
+    display: block;
+  }
+
+  .nav-pages-drpdwn {
+    position: absolute;
+    right: 20px;
+    display: none;
+    z-index: 1;
+    background-color: black;
+  }
+
+  .icon {
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+    /* main content */
+  .main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2em;
+  }
+
+  /* food categories section */
+  .cat-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 0;
+    width: 100%;
+    padding: 0 1em 0 0;
+  }
+
+  .cat-card-link {
+    margin: 0;
+    padding: 0;
+  }
+
+  .link1 {
+    display: none;
+  }
+
+  .user-info {
+    width: 100%;
+  }
+
+  .user-info-1 {
+    display: none;
+  }
+
+  .user-info-2 {
+    display: block;
+    width: 100%;
+  }
+}
