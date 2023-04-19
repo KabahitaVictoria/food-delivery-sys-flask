@@ -16,11 +16,11 @@ I have added authentication using jwt access tokens stored in the local storage
 - users can logout of their account
 - refresh tokens have been set up so that a user isn't asked to login again after access token expires (after one hour)
 
-## Current progress
-- reflecting user info on the dashboard
-- allowing user to edit their info
+## Functionality
+- user info reflected on the dashboard
+- user can update their info
 
-## Later on...
-- add functionality for adding categories and items to categories
-- design the profile ui for a user
-- design dashboard and profile for administrator
+## Current progress...
+- adding functionality for adding categories and items to categories
+- designing the profile ui for a user
+- designing dashboard and profile for administrator
