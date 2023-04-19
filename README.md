@@ -19,8 +19,7 @@ I have added authentication using jwt access tokens stored in the local storage
 ## Functionality
 - user info reflected on the dashboard
 - user can update their info
+- user can add orders which will be reflected in the orders page
 
 ## Current progress...
-- adding functionality for adding categories and items to categories
-- designing the profile ui for a user
-- designing dashboard and profile for administrator
+- implementing admin code from Shadia
