@@ -1,5 +1,5 @@
 // Import the Menu component from "../MenuComponents/menu"
-import Menu from "../MenuComponents/menu";
+import Menu from "../components/menu";
 
 // Import the Nav component from "../components/Nav"
 import { Nav } from "../components/Nav";

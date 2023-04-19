@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MenuCategory } from "./MenuCategory";
 
 // Creating a functional component called "Menu"
-const Menu = () => {
+export const Menu = () => {
   // Declaring a state variable named "foodItemArray" and initializing it as an empty array
   const [foodItemArray, setFoodItemArray] = useState([]);
 
