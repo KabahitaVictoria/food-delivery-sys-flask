@@ -1,20 +1,28 @@
-// import { useParams } from "react-router-dom"
-// import { useEffect } from "react";
-import { Nav } from "../components/Nav"
+// Import the Nav component from "../components/Nav"
+import { Nav } from "../components/Nav";
+
+// Import the Footer component from "../components/Footer"
 import { Footer } from "../components/Footer";
-import { UpdateInfo } from "../components/UpdateInfo"
 
+// Import the UpdateInfo component from "../components/UpdateInfo"
+import { UpdateInfo } from "../components/UpdateInfo";
+
+// Define the ProfilePage component
 export function ProfilePage() {
-    // const { id } = useParams();
-
-    return (
-      <div className="profile">
-        <div className="content-container">
-          <Nav />
-          <h1>Profile info</h1>
-          <UpdateInfo />
-        </div>
-        <Footer />
+  // Render the ProfilePage component
+  return (
+    <div className="profile">
+      <div className="content-container">
+        {/* Render the Nav component */}
+        <Nav />
+        {/* Render the heading for the profile info */}
+        <h1>Profile info</h1>
+        {/* Render the UpdateInfo component */}
+        <UpdateInfo />
       </div>
-    );
+
+      {/* Render the Footer component */}
+      <Footer />
+    </div>
+  );
 }

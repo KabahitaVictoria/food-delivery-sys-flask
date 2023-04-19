@@ -10,9 +10,11 @@ export function SignUpForm() {
   const [data, setData] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
+  // Function to handle form submission
   const onSubmitClick = (e) => {
     e.preventDefault();
 
+    // Get sign up details from input fields
     let signUpDetails = {
       firstName: firstName,
       lastName: lastName,
@@ -21,6 +23,7 @@ export function SignUpForm() {
       password: password,
     };
 
+    // Send a POST request to the server with sign up details
     fetch("http://localhost:5000/auth/register", {
       method: "POST",
       body: JSON.stringify(signUpDetails),
@@ -30,17 +33,20 @@ export function SignUpForm() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.message) {
-          setData(data.message)
-        } else if(data.error) {
-          setData(data.error)
+        // Check if there is a message or error in the response data
+        if (data.message) {
+          setData(data.message);
+        } else if (data.error) {
+          setData(data.error);
         }
       })
       .catch((err) => console.log(err));
 
+    // Set state to indicate form submission
     setHasSubmitted(!hasSubmitted);
   };
 
+  // Function to close the form
   function closeForm2() {
     document.getElementById("myForm2").style.display = "none";
   }
@@ -48,6 +54,7 @@ export function SignUpForm() {
   return (
     <>
       <h1>Sign Up</h1>
+      {/* Display message if form has been submitted */}
       {hasSubmitted ? <p>{data}</p> : <p></p>}
       <label htmlFor="first-name">
         <b>First name</b>
@@ -109,12 +116,16 @@ export function SignUpForm() {
         onChange={(e) => setPassword(e.target.value)}
       ></input>
 
+      {/* Submit form details */}
       <button type="submit" className="btn" onClick={onSubmitClick}>
         Sign Up
       </button>
+
+      {/* Close sign up form */}
       <button type="button" className="btn-cancel" onClick={closeForm2}>
         Close
       </button>
     </>
   );
+
 }

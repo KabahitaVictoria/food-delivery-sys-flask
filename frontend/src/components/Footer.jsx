@@ -1,22 +1,29 @@
+// Import necessary dependencies from React and React Router DOM
 import { useParams, Link } from "react-router-dom";
 
+// Define Footer component
 export function Footer() {
+  // Get the user ID parameter from the URL using useParams hook
   const { id } = useParams();
 
+  // Render the footer component
   return (
     <div className="footer">
+      {/* Render burger icon */}
       <div className="burger-icon">
         <img
           src="https://img.icons8.com/pastel-glyph/64/null/beefburger.png"
           alt=""
         />
       </div>
+      {/* Render Pages section */}
       <div className="pages-footer">
         <h3>Pages</h3>
         <div className="pages-link">
           <ul>
+            {/* Render links to different pages */}
             <li>
-              <Link to={`/`} className="footer-link">
+              <Link to={"/"} className="footer-link">
                 Home
               </Link>
             </li>
@@ -38,10 +45,12 @@ export function Footer() {
           </ul>
         </div>
       </div>
+      {/* Render Contact Us section */}
       <div className="contact-footer">
         <h3>Contact Us</h3>
         <div className="contact-link">
           <ul>
+            {/* Render links to different contact channels */}
             <li>
               <a href="#twitter" className="footer-link">
                 Twitter
