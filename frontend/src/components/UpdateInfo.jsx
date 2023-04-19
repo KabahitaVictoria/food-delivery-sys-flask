@@ -27,7 +27,6 @@ export function UpdateInfo(props) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setFirstName(data.data.first_name);
         setLastName(data.data.last_name);
         setEmail(data.data.email);
@@ -68,8 +67,6 @@ export function UpdateInfo(props) {
 
     setHasSubmitted(!hasSubmitted);
   };
-
-  console.log(props);
 
   return (
     <div className="update-info">

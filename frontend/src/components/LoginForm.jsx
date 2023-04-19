@@ -1,5 +1,6 @@
-export function LoginForm(props) {
+import "../css/LandingPage.css";
 
+export function LoginForm(props) {
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
   }
@@ -7,8 +8,15 @@ export function LoginForm(props) {
   return (
     <>
       <h1>Login</h1>
+      <a href="#adminsignin" className="signin" onClick={props.openAdminForm}>
+        Sign In As Admin
+      </a>
 
-      {props.hasSubmitted ? <p>{props.data}</p> : <p>Please provide the correct details</p>}
+      {props.hasSubmitted ? (
+        <p>{props.data}</p>
+      ) : (
+        <p>Please provide the correct details</p>
+      )}
 
       <label htmlFor="email">
         <b>Email</b>
@@ -44,4 +52,3 @@ export function LoginForm(props) {
     </>
   );
 }
-

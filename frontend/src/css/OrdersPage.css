@@ -1,14 +1,65 @@
-.orders-body, .orders-body div {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+.orange {
+    color: #c59d5f;
 }
 
 .orders-body {
     padding: 0 4em;
 }
 
-.orders-body div {
+.orders-cards {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.order-card {
+    border: 1px solid rgba(0, 0, 0, 0.219);
+    border-radius: 3px;
+    padding: 0 auto;
+    padding-top: 1em;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+}
+
+.order-card:hover {
+    transition: .5s;
+    background-color: rgba(0, 0, 0, 0.020);
+    border: 1px solid rgba(0, 0, 0, 0.432);
+}
+
+.order-card img{
+    width: 220px;
+    object-fit: contain;
+    border: 0.25rem solid hsl(360, 71%, 66%);
+}
+
+.order-name {
+    border-bottom: 1px dotted #c59d5f;
+}
+
+.order-info {
+    margin-bottom: .5em;
+}
+
+.order-info p {
+    margin: 0;
+    padding: 0;
+}
+
+.order-button {
+    background-color: #fe9800;
+    color: white;
+    padding: .76em;
+}
+
+.order-button:hover {
+    padding: .77em;
+    border: 1px solid #c59d5f;
+    transition: .5s;
+    cursor: pointer;
 }

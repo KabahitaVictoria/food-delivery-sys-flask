@@ -1,39 +1,40 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { MenuCategory } from "../components/MenuCategory";
 
-const Menu = ({ items }) => {
+const Menu = () => {
+  const [foodItemArray, setFoodItemArray] = useState([])
+
+  const getToken = () =>
+    localStorage.getItem("access_token")
+      ? JSON.parse(localStorage.getItem("access_token"))
+      : null;
+
+  useEffect(()=> {
+    fetch("http://localhost:5000/food_items/", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:5173",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("food_items", JSON.stringify(data.data));
+        setFoodItemArray(JSON.parse(localStorage.getItem("food_items")));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [])
 
   return (
-    <div className="section-center">
-      {items.map((item) => {
-        const { id, title, img, desc, price } = item;
-
-        function onAddButtonClick() {
-          alert("Added order successfully!");
-          console.log(item);
-        }
-
-        return (
-          <article key={id} className="menu-item">
-            <img src={img} alt={title} className="photo" title={`${title}`} />
-            <div className="item-info">
-              <header>
-                <div className="item-header-info">
-                  <h4>{title}</h4>
-                  <h4 className="price">Shs.{price}</h4>
-                </div>
-                <button
-                  className="add-button"
-                  title="add to orders"
-                  onClick={onAddButtonClick}
-                >
-                  +
-                </button>
-              </header>
-              <p className="item-text">{desc}</p>
-            </div>
-          </article>
-        );
-      })}
+    <div className="all">
+      {foodItemArray.length === 0 ? (
+        <p>Loading...</p>
+      ) : (
+        <MenuCategory foodItemArray={foodItemArray} />
+      )}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { Sample } from "../components/Sample";
 import { LoginForm } from "../components/LoginForm";
+import { AdminLoginForm } from "../components/AdminLoginForm";
 import { SignUpForm } from "../components/SignUpForm";
 import { Footer } from "../components/Footer";
 import { useState } from "react";
@@ -29,11 +30,12 @@ export function LandingPage() {
       body: JSON.stringify(loginDetails),
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:5173",
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        setData(data.message)
+        setData(data.message);
         if (data.tokens.access_token) {
           localStorage.setItem(
             "access_token",
@@ -53,6 +55,10 @@ export function LandingPage() {
 
   function openForm2() {
     document.getElementById("myForm2").style.display = "block";
+  }
+
+  function openAdminForm() {
+    document.getElementById("adminForm").style.display = "block";
   }
 
   return (
@@ -88,6 +94,24 @@ export function LandingPage() {
             <LoginForm
               setEmail={setEmail}
               setPassword={setPassword}
+              email={email}
+              password={password}
+              hasSubmitted={hasSubmitted}
+              data={data}
+              openAdminForm={openAdminForm}
+            />
+          </form>
+        </div>
+        <div className="form-popup" id="adminForm">
+          <form
+            action=""
+            className="form-container"
+            method="post"
+            onSubmit={onSubmit}
+          >
+            <AdminLoginForm
+              ChangeEmail={setEmail}
+              ChangePassword={setPassword}
               email={email}
               password={password}
               hasSubmitted={hasSubmitted}

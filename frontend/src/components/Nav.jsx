@@ -1,4 +1,4 @@
-import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 
 export function Nav() {
   const { id } = useParams();
@@ -25,13 +25,11 @@ export function Nav() {
 
   return (
     <nav className="prof-nav">
-      <div className="logo">
-        <Link to={"/"}>
+      <div className="logo" onClick={logMeOut}>
           <img
             src="https://img.icons8.com/stickers/100/null/hamburger.png"
             alt=""
           />
-        </Link>
       </div>
       <div className="nav-pages">
         <NavLink

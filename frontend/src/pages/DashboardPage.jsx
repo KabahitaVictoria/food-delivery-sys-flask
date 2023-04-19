@@ -25,12 +25,10 @@ export function UserDash() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setFirstName(data.data.first_name);
         setLastName(data.data.last_name);
         setEmail(data.data.email);
         setContact(data.data.contact);
-        console.log(data.data.contact);
       });
   });
 

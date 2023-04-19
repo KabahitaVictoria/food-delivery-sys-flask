@@ -44,8 +44,13 @@
   transition: 0.5s;
 }
 
+.signin {
+  color: gray;
+  text-decoration: none;
+}
+
 .signin:hover {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid gray;
   transition: 1s;
 }
 
