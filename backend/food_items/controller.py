@@ -1,5 +1,6 @@
 from flask import jsonify, Blueprint, request
 from backend.food_items.model import FoodItem, FoodSchema
+from backend.categories.model import Category
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from backend.db import db
 import datetime
@@ -38,9 +39,19 @@ def create_food_item():
     price = data['price']
     image = data['image']
     stock = data['stock']
+    description = data['description']
+    category_id = data['category_id']
+    
+    category_name = Category.query.get_or_404(category_id).name
     
     if not name:
         return jsonify({'error':"Please provide a food item name"})
+    
+    if not category_id:
+        return jsonify({'error':"This category id does not exist!"})
+    
+    if not description:
+        return jsonify({'error':"Please provide a food item description"})
     
     if not price:
         return jsonify({'error':"Please provide a food item price"})
@@ -54,7 +65,7 @@ def create_food_item():
     if FoodItem.query.filter_by(name=name).first() is not None:
             return jsonify({'error': "This food item already exists"}), 409
         
-    food_item = FoodItem(name=name, price=price,image=image, stock=stock, created_at=datetime.datetime.utcnow())
+    food_item = FoodItem(name=name, price=price,image=image, stock=stock, created_at=datetime.datetime.utcnow(), description=description, category_id=category_id,category_name=category_name)
     
     db.session.add(food_item)
     db.session.commit()

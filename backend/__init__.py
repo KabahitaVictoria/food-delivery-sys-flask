@@ -5,6 +5,7 @@ from backend.db import db, ma
 from flask_jwt_extended import JWTManager # set up jwt with our app 
 from datetime import timedelta
 from flask_cors import CORS
+from sqlalchemy import Index
 
 load_dotenv()
 
@@ -16,10 +17,21 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
     app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
     
-    CORS(app=app)
+    CORS(app=app, resources={r"/*": {"origins": "*"}})
     
     db.init_app(app)
     ma.init_app(app)
+    
+    from backend.food_items.model import FoodItem
+
+    # Define the index to drop
+    my_index = Index('unique', FoodItem.category_name)
+
+    # Drop the index if exists
+    my_index.drop(bind=db.engine, checkfirst=True)
+
+    # Create the index
+    my_index.create(bind=db.engine)
     
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
     app.config["JWT_REQUEST_TOKEN_EXPIRES"] = timedelta(days=30)
@@ -31,8 +43,8 @@ def create_app():
     from backend.users.model import User
     from backend.addresses.model import Address
     from backend.categories.model import Category
-    from backend.districts.model import District
     from backend.food_items.model import FoodItem
+    from backend.districts.model import District
     from backend.regions.model import Region
     from backend.orders.model import Order
     

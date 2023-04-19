@@ -1,16 +1,29 @@
 from flask import jsonify, Blueprint, request
 from backend.orders.model import Order, OrderSchema
+from backend.food_items.model import FoodItem
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from backend.db import db
 
 orders = Blueprint('orders', __name__, url_prefix='/orders')
 
+# # ------------------------
+# # GET ALL ORDERS
+# @orders.route('/')
+# @jwt_required()
+# def get_all_orders():
+#         current_user_id = get_jwt_identity()
+#         orders = Order.query.filter_by(user_id=current_user_id).all()
+#         order_schema = OrderSchema(many=True)
+#         output = order_schema.dump(orders)
+#         return jsonify({'data': output})
+
 # ------------------------
-# GET ALL ORDERS
-@orders.route('/')
+# GET ALL ORDERS OF SPECIFIC USER
+@orders.route('/<int:id>')
 @jwt_required()
-def get_all_orders():
-        orders = Order.query.all()
+def get_all_orders(id):
+        current_user_id = id
+        orders = Order.query.filter_by(user_id=current_user_id).all()
         order_schema = OrderSchema(many=True)
         output = order_schema.dump(orders)
         return jsonify({'data': output})
@@ -35,18 +48,27 @@ def create_order():
     data = request.get_json()
     quantity = data['quantity']
     location = data['location']
+    food_item_id = data['food_item_id']
     
+    current_user = get_jwt_identity()
+
     if not quantity:
         return jsonify({'error':"Please provide a food order quantity"})
-    
+
     if not location:
         return jsonify({'error':"Please provide a location for your order"})
-        
-    order = Order(quantity=quantity, location=location)
-    
+
+    food_item = FoodItem.query.get(food_item_id)
+
+    if not food_item:
+        return jsonify({'error': f"No food item found with id {food_item_id}"})
+
+    order = Order(quantity=quantity, location=location, food_item_id=food_item_id, user_id=current_user)
+    order.food_item = food_item
+
     db.session.add(order)
     db.session.commit()
-    
+
     return jsonify({'message': f'A new order has been created successfully', 'data': OrderSchema().dump(order)}),201
 
 # ------------------------
