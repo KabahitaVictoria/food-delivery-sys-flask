@@ -1,4 +1,7 @@
 # FOOD-DELIVERY APP (Flask and React JS)
+## Screenshot
+![project-img](https://github.com/KabahitaVictoria/food-delivery-sys-flask/assets/89969629/be6f93b9-0a7a-49f6-97d1-a18fdec6c728)
+
 ## starting both frontend and backend in different terminals
 Backend:
 - flask --app run.py --debug run
