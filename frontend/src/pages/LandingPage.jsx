@@ -1,7 +1,7 @@
 // Import necessary components and modules
 import { Sample } from "../components/Sample";
 import { LoginForm } from "../components/LoginForm";
-import { AdminLoginForm } from "../components/AdminLoginForm";
+// import { AdminLoginForm } from "../components/AdminLoginForm";
 import { SignUpForm } from "../components/SignUpForm";
 import { Footer } from "../components/Footer";
 import { useState } from "react";
@@ -13,10 +13,6 @@ export function LandingPage() {
   // Set state for user login details
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // Set state for admin login details
-  const [adminEmail, setAdminEmail] = useState("");
-  const [adminPassword, setAdminPassword] = useState("");
 
   // Set state for form submission
   const [data, setData] = useState("");
@@ -61,26 +57,6 @@ export function LandingPage() {
     setHasSubmitted(!hasSubmitted);
   };
 
-  // Function to handle admin login form submission
-  const onAdminSubmit = (e) => {
-    e.preventDefault();
-
-    let adminLoginDetails = {
-      email: adminEmail,
-      password: adminPassword,
-    };
-
-    // Send admin login details to server for authentication
-    fetch("http://localhost:5000/auth/login", {
-      method: "post",
-      body: JSON.stringify(adminLoginDetails),
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:5173",
-      },
-    }).then((res) => res.json());
-  };
-
   // Function to display user login form
   function openForm() {
     document.getElementById("myForm").style.display = "block";
@@ -93,7 +69,7 @@ export function LandingPage() {
 
   // Function to display admin login form
   function openAdminForm() {
-    document.getElementById("adminForm").style.display = "block";
+    navigate("/admin/login_form");
   }
 
   // Start of main component's render method
@@ -146,24 +122,6 @@ export function LandingPage() {
             />
           </form>
         </div>
-        {/* Admin Sign In form */}
-        <div className="form-popup" id="adminForm">
-          <form
-            action=""
-            className="form-container"
-            method="post"
-            onSubmit={onAdminSubmit}
-          >
-            <AdminLoginForm
-              ChangeEmail={setAdminEmail}
-              ChangePassword={setAdminPassword}
-              email={adminEmail}
-              password={adminPassword}
-              hasSubmitted={hasSubmitted}
-              data={data}
-            />
-          </form>
-        </div>
         {/* Sign Up form */}
         <div className="form-popup" id="myForm2">
           <form action="" className="form-container" method="post">
@@ -173,19 +131,15 @@ export function LandingPage() {
         {/* Sample section 1 */}
         <Sample
           image="/ikhsan-baihaqi-dXeBXaThv4U-unsplash.jpg"
-          text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati
-        architecto explicabo eveniet officia fugiat dolor eos ratione
-        distinctio, dolores modi corporis, similique ex temporibus, cupiditate
-        consectetur rerum earum dolore. Magni."
+          text="Burgers! Because no great story started with salad. As we like to say, you need to eat outside the box. 
+          Something hot. Something tasty. 
+          Good food. Good mood."
           className="sample sample1"
         />
         {/* Sample section 2 */}
         <Sample
           image="/kristina-bratko-nP11TkjxJ7s-unsplash.jpg"
-          text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati
-        architecto explicabo eveniet officia fugiat dolor eos ratione
-        distinctio, dolores modi corporis, similique ex temporibus, cupiditate
-        consectetur rerum earum dolore. Magni."
+          text="Fun. Fast. Tasty. Delicious. Food that makes you happy. Fast and yummy. Good for your tummy."
           className="sample sample2"
         />
         {/* Footer */}

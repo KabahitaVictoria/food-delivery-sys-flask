@@ -118,6 +118,37 @@
   width: 29%;
 }
 
+/* orders section */
+.orders-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.orders-dashboard h2 {
+  color: #fe9800;
+  margin: 1em;
+}
+
+.orders-dashboard-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.order-card-dashboard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.418);
+  width: 300px;
+  padding: 1em;
+}
+
+.order-card-dashboard p {
+  padding-top: 0;
+  margin: 0;
+}
+
 /* user info section */
 .user-info-2 {
   display: none;
@@ -228,5 +259,14 @@
   .user-info-2 {
     display: block;
     width: 100%;
+  }
+
+  .orders-dashboard {
+    display: block;
+    padding: 0;
+  }
+
+  .order-card-dashboard {
+    border: none;
   }
 }

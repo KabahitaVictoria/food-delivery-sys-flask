@@ -102,6 +102,6 @@ def update_order(id):
         
         db.session.commit()
         
-        return jsonify({'message': f'order of id {id} updated successfully' ,'data': OrderSchema().dump(order_to_update)}),200
+        return jsonify({'message': f'Your order has been updated successfully!' ,'data': OrderSchema().dump(order_to_update)}),200
     
     

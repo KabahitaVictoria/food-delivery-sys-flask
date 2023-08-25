@@ -1,0 +1,30 @@
+.user-table {
+  background-color: black;
+  color: white;
+  padding: 1em;
+  margin: 0 auto;
+}
+
+.user-table th,
+td {
+  padding: 1em;
+}
+
+.user-table th {
+  background-color: white;
+  color: black;
+}
+
+.user-table button {
+  color: white;
+  padding: 0.8em;
+  border-radius: 5px;
+}
+
+.delete-user-button {
+  background-color: red;
+}
+
+.see-user-orders-button {
+  background-color: darkcyan;
+}

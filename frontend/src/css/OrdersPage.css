@@ -34,6 +34,7 @@
 
 .order-card img{
     width: 220px;
+    height: 220px;
     object-fit: contain;
     border: 0.25rem solid hsl(360, 71%, 66%);
 }
@@ -51,10 +52,17 @@
     padding: 0;
 }
 
+.order-buttons {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: .75em;
+}
+
 .order-button {
     background-color: #fe9800;
     color: white;
-    padding: .76em;
+    padding: .76em .8em;
+    margin: .2em;
 }
 
 .order-button:hover {
@@ -63,3 +71,9 @@
     transition: .5s;
     cursor: pointer;
 }
+
+.delete-order-button {
+    background-color: red;
+}
+
+

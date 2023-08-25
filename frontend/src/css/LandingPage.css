@@ -126,6 +126,32 @@ input {
   background-color: red;
 }
 
+/* admin form */
+.admin-form {
+  margin: 3em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(7, 7, 7, 0.781);
+  padding: 2em 4em 4em 4em;
+  width: 50%;
+  border: 1px solid;
+  color: white;
+}
+
+.admin-form .btn {
+  background-color: seagreen;
+  color: white;
+  padding: 1em;
+  width: 40%;
+  font-weight: bold;
+}
+
+.admin-form .btn-home {
+  background-color: #fe9800;
+  color: black;
+}
+
 /* sample divs */
 .sample {
   display: flex;

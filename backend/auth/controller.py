@@ -65,14 +65,19 @@ def create_user():
     
 # Using an `after_request` callback, we refresh any token that is within 30
 # minutes of expiring. Change the timedeltas to match the needs of your application.
+from datetime import datetime, timedelta, timezone
+from flask_jwt_extended import create_access_token, get_jwt_identity, set_access_cookies
+
 @auth.after_request
 def refresh_expiring_jwts(response):
     try:
         exp_timestamp = get_jwt()["exp"]
         now = datetime.now(timezone.utc)
         target_timestamp = datetime.timestamp(now + timedelta(minutes=30))
-        if target_timestamp > exp_timestamp:
-            access_token = create_access_token(identity=get_jwt_identity())
+        if exp_timestamp < target_timestamp:
+            # If the token has expired or is about to expire, generate a new token and set it as a cookie
+            identity = get_jwt_identity()
+            access_token = create_access_token(identity=identity)
             set_access_cookies(response, access_token)
         return response
     except (RuntimeError, KeyError):
@@ -107,6 +112,37 @@ def login_user():
         
     else:
         return jsonify({'error': 'email entered does not exist. Please sign up!'}), 401
+    
+# LOGIN AS ADMIN 
+@auth.route('/admin_login', methods=['POST'])
+def login_admin():
+    email = request.json.get("email", '') # default value so app doesn't crash
+    password = request.json.get("password", '')
+    
+    #check if user exists
+    user = User.query.filter_by(email=email).first()
+    
+    if user:
+        # Check if user is an admin
+        if user.user_type == 'admin':
+            check_password = check_password_hash(user.password, password)
+            
+            if check_password:
+                refresh = create_refresh_token(identity=user.id)
+                access = create_access_token(identity=user.id)
+                return jsonify({'tokens': {
+                    'refresh_token': refresh,
+                    'access_token': access
+                }, 'for': {
+                    'email': email,
+                    'id': user.id
+                }})
+            else:
+                jsonify({'message': 'password is incorrect, please try again'}), 401
+        else:
+            return jsonify({'message': 'Sorry, you are not an administrator. Please sign up or sign in as a user!'}), 401
+    else:
+        return jsonify({'message': 'email entered does not exist. Please sign up!'}), 401
     
 # ------------------------
 # REFRESH ACCESS TOKEN
